@@ -100,6 +100,8 @@ namespace BeltView
                                 textBox.ForeColor = Convert.ToInt32(textBox.Text) > 100 || Convert.ToInt32(textBox.Text) < 10 ? Color.Red : Color.Black;
                                 break;
                             }
+                        default:
+                            break;
                     }
                 }
             }
