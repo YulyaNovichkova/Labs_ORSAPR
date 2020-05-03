@@ -20,7 +20,7 @@
         public const int maxDiametrTongueBuckleValue = 4;
         
         public const int minWidthBuckleValue = 22;
-        public const int maxWidthBuckleValue = 40;
+        public const int maxWidthBuckleValue = 42;
 
         public const int minLengthBuckleValue = 20;
         public const int maxLengthBuckleValue = 30;

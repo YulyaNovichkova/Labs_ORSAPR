@@ -97,7 +97,7 @@
             this.heightTapeTextBox.Name = "heightTapeTextBox";
             this.heightTapeTextBox.Size = new System.Drawing.Size(48, 20);
             this.heightTapeTextBox.TabIndex = 3;
-            this.heightTapeTextBox.Text = "4";
+            this.heightTapeTextBox.Text = "3";
             this.heightTapeTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.heightTapeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
