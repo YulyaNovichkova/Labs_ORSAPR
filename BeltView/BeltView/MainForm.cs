@@ -98,49 +98,121 @@ namespace BeltView
                         case "widthTapeTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value > 30 || value < 20 ? Color.Red : Color.Black;
+                                if (value > 40 || value < 20)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "lengthTapeTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value > 1200 || value < 800 ? Color.Red : Color.Black;
+                                if (value > 1200 || value < 800)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "heightTapeTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value != 4 ? Color.Red : Color.Black;
+                                if (value > 4 || value < 3)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "diametrHoleTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value != 4 ? Color.Red : Color.Black;
+                                if (value != 4)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "distanceHoleTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value > 25 || value < 15 ? Color.Red : Color.Black;
+                                if (value > 25 || value < 15)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "lengthBuckleTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value > 30 || value < 20 ? Color.Red : Color.Black;
+                                if (value > 30 || value < 20)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "widthBuckleTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value > 60 || value < 40 ? Color.Red : Color.Black;
+                                if (value > 40 || value < 22)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         case "diametrTongueBuckleTextBox":
                             {
                                 int value = Convert.ToInt32(textBox.Text);
-                                textBox.ForeColor = value > 4 || value < 3 ? Color.Red : Color.Black;
+                                if (value > 4 || value < 3)
+                                {
+                                    textBox.ForeColor = Color.Red;
+                                    buildButton.Enabled = false;
+                                }
+                                else
+                                {
+                                    textBox.ForeColor = Color.Black;
+                                    buildButton.Enabled = true;
+                                }
                                 break;
                             }
                         default:

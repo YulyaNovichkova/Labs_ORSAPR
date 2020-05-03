@@ -19,11 +19,11 @@
         public const int minDiametrTongueBuckleValue = 3;
         public const int maxDiametrTongueBuckleValue = 4;
         
-        public const int minWidthBuckleValue = 20;
+        public const int minWidthBuckleValue = 22;
         public const int maxWidthBuckleValue = 40;
 
-        public const int minLengthBuckleValue = 40;
-        public const int maxLengthBuckleValue = 50;
+        public const int minLengthBuckleValue = 20;
+        public const int maxLengthBuckleValue = 30;
 
     }
 }

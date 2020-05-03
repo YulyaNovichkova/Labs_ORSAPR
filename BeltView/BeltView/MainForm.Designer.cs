@@ -137,7 +137,7 @@
             this.widthBuckleTextBox.Name = "widthBuckleTextBox";
             this.widthBuckleTextBox.Size = new System.Drawing.Size(48, 20);
             this.widthBuckleTextBox.TabIndex = 6;
-            this.widthBuckleTextBox.Text = "40";
+            this.widthBuckleTextBox.Text = "22";
             this.widthBuckleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.widthBuckleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
@@ -322,7 +322,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 22);
+            this.label6.Location = new System.Drawing.Point(6, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 13;
@@ -331,7 +331,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 48);
+            this.label7.Location = new System.Drawing.Point(6, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 14;

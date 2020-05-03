@@ -60,7 +60,7 @@ namespace BeltModel
             {
                 if (value > BeltValidator.maxDiametrTongueBuckleValue || value < BeltValidator.minDiametrTongueBuckleValue)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minDiametrTongueBuckleValue + " до " + BeltValidator.maxDiametrTongueBuckleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minDiametrTongueBuckleValue + " до " + BeltValidator.maxDiametrTongueBuckleValue);
                 }
                 _diametrTongueBuckle = value;
             }
@@ -74,7 +74,10 @@ namespace BeltModel
            get => _lengthBuckle;
            private set
             {
-
+                if (value > BeltValidator.maxLengthBuckleValue || value < BeltValidator.minLengthBuckleValue)
+                {
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minLengthBuckleValue + " до " + BeltValidator.maxLengthBuckleValue);
+                }
                 _lengthBuckle = value;
             }
         }
@@ -89,7 +92,7 @@ namespace BeltModel
             {
                 if (value > BeltValidator.maxWidthBuckleValue || value < BeltValidator.minWidthBuckleValue)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minWidthBuckleValue + " до " + BeltValidator.maxWidthBuckleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minWidthBuckleValue + " до " + BeltValidator.maxWidthBuckleValue);
                 }
                 _widthBuckle = value;
             }
@@ -121,7 +124,7 @@ namespace BeltModel
             {
                 if (value > BeltValidator.maxDistanceHoleValue || value < BeltValidator.minDistanceHoleValue)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minDistanceHoleValue + " до " + BeltValidator.maxDistanceHoleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minDistanceHoleValue + " до " + BeltValidator.maxDistanceHoleValue);
                 }
                 _distanceHole = value;
             }
@@ -137,7 +140,7 @@ namespace BeltModel
             {
                 if (value > BeltValidator.maxLengthTapeValue || value < BeltValidator.minLengthTapeValue)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minLengthTapeValue + " до " + BeltValidator.maxLengthTapeValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minLengthTapeValue + " до " + BeltValidator.maxLengthTapeValue);
                 }
                 _lengthTape = value;
             }
@@ -153,7 +156,7 @@ namespace BeltModel
             {
                 if(value > BeltValidator.maxHeightTapeValue || value < BeltValidator.minHeightTapeValue)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minHeightTapeValue + " до " + BeltValidator.maxHeightTapeValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minHeightTapeValue + " до " + BeltValidator.maxHeightTapeValue);
                 }
                 _heightTape = value;
             }
@@ -169,7 +172,7 @@ namespace BeltModel
             {
                 if (value > BeltValidator.maxWidthTapeValue || value < BeltValidator.minWidthTapeValue)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minWidthTapeValue + " до " + BeltValidator.maxWidthTapeValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minWidthTapeValue + " до " + BeltValidator.maxWidthTapeValue);
                 }
                 _widthTape = value;
             }
