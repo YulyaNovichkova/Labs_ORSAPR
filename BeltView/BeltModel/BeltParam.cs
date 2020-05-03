@@ -106,9 +106,9 @@ namespace BeltModel
             get => _diametrHole;
             private set
             {
-                if (value != BeltValidator.diametrHoleValue)
+                if (value > BeltValidator.maxDiametrHoleValue || value < BeltValidator.minDiametrHoleValue)
                 {
-                    throw new ArgumentException("Значение должно быть равно " + BeltValidator.diametrHoleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minDiametrHoleValue + " до " + BeltValidator.maxDiametrHoleValue);
                 }
                 _diametrHole = value;
             }

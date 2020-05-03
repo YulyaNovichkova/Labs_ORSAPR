@@ -11,7 +11,8 @@
         public const int minHeightTapeValue = 3;
         public const int maxHeightTapeValue = 4;
 
-        public const int diametrHoleValue = 4;
+        public const int minDiametrHoleValue = 3;
+        public const int maxDiametrHoleValue = 5;
 
         public const int minDistanceHoleValue = 15;
         public const int maxDistanceHoleValue = 25;

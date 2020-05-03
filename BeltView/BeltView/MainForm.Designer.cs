@@ -107,7 +107,7 @@
             this.diametrHoleTextBox.Name = "diametrHoleTextBox";
             this.diametrHoleTextBox.Size = new System.Drawing.Size(48, 20);
             this.diametrHoleTextBox.TabIndex = 4;
-            this.diametrHoleTextBox.Text = "4";
+            this.diametrHoleTextBox.Text = "3";
             this.diametrHoleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.diametrHoleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 

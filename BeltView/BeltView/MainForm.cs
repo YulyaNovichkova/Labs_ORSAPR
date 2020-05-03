@@ -114,7 +114,8 @@ namespace BeltView
                             }
                         case "diametrHoleTextBox":
                             {
-                                textBox.ForeColor = value != BeltValidator.diametrHoleValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > BeltValidator.maxDiametrHoleValue ||
+                                    value < BeltValidator.minDiametrHoleValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "distanceHoleTextBox":
