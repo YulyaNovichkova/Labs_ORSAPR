@@ -1,6 +1,6 @@
 ﻿namespace BeltModel
 {
-    static class BeltValidator
+    public static class BeltValidator
     {
         public const int minLengthTapeValue = 800;
         public const int maxLengthTapeValue = 1200;

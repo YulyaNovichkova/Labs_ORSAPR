@@ -2,9 +2,7 @@
 using System.Windows.Forms;
 using BeltModel;
 using BeltBuilder;
-using System.ComponentModel;
 using System.Drawing;
-using System.Text.RegularExpressions;
 
 namespace BeltView
 {
@@ -93,131 +91,63 @@ namespace BeltView
                 }
                 else
                 {
+                    int value = Convert.ToInt32(textBox.Text);
                     switch (textBox.Name)
                     {
                         case "widthTapeTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 40 || value < 20)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxWidthTapeValue ||
+                                    value < BeltValidator.minWidthTapeValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "lengthTapeTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 1200 || value < 800)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxLengthTapeValue || 
+                                    value < BeltValidator.minLengthTapeValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "heightTapeTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 4 || value < 3)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxHeightTapeValue || 
+                                    value < BeltValidator.minHeightTapeValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "diametrHoleTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value != 4)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value != BeltValidator.diametrHoleValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "distanceHoleTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 25 || value < 15)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxDistanceHoleValue || 
+                                    value < BeltValidator.minDistanceHoleValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "lengthBuckleTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 30 || value < 20)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxLengthBuckleValue || 
+                                    value < BeltValidator.minLengthBuckleValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "widthBuckleTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 40 || value < 22)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxWidthBuckleValue || 
+                                    value < BeltValidator.minWidthBuckleValue ? Color.Red : Color.Black;
                                 break;
                             }
                         case "diametrTongueBuckleTextBox":
                             {
-                                int value = Convert.ToInt32(textBox.Text);
-                                if (value > 4 || value < 3)
-                                {
-                                    textBox.ForeColor = Color.Red;
-                                    buildButton.Enabled = false;
-                                }
-                                else
-                                {
-                                    textBox.ForeColor = Color.Black;
-                                    buildButton.Enabled = true;
-                                }
+                                textBox.ForeColor = value > BeltValidator.maxDiametrTongueBuckleValue || 
+                                    value < BeltValidator.minDiametrTongueBuckleValue ? Color.Red : Color.Black;
                                 break;
                             }
                         default:
                             break;
                     }
+                    buildButton.Enabled = !(diametrHoleTextBox.ForeColor == Color.Red || widthBuckleTextBox.ForeColor == Color.Red || 
+                        lengthBuckleTextBox.ForeColor == Color.Red || distanceHoleTextBox.ForeColor == Color.Red ||
+                        diametrHoleTextBox.ForeColor == Color.Red || heightTapeTextBox.ForeColor == Color.Red || 
+                        lengthTapeTextBox.ForeColor == Color.Red || widthTapeTextBox.ForeColor == Color.Red);
                 }
             }
         }
