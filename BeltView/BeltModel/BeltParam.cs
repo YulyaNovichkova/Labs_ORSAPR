@@ -21,65 +21,6 @@ namespace BeltModel
         /// </summary>
         private int _widthBuckle;
 
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        ///     Диаметр язычка бляшки
-        /// </summary>
-        public int DiametrTongueBuckle
-        {
-            get => _diametrTongueBuckle;
-            set
-            {
-                if (value < 3 || value > 4)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _diametrTongueBuckle = value;
-            }
-        }
-
-        /// <summary>
-        ///     Длина бляшки
-        /// </summary>
-        public int LengthBuckle
-        {
-            get => _lengthBuckle;
-            set
-            {
-                if (value < 40 || value > 60)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _lengthBuckle = value;
-            }
-        }
-
-        /// <summary>
-        ///     Ширина бляшки
-        /// </summary>
-        public int WidthBuckle
-        {
-            get => _widthBuckle;
-            set
-            {
-                if (value < 20 || value > 30)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _widthBuckle = value;
-            }
-        }
-
-        #endregion
-
-        #region Private fields
-
         /// <summary>
         ///     Диаметр отверстий
         /// </summary>
@@ -89,48 +30,6 @@ namespace BeltModel
         ///     Расстояние между отверстиями
         /// </summary>
         private int _distanceHole;
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        ///     Диаметр отверстий
-        /// </summary>
-        public int DiametrHole
-        {
-            get => _diametrHole;
-            set
-            {
-                if (value != 4)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _diametrHole = value;
-            }
-        }
-
-        /// <summary>
-        ///     Расстояние между отверстиями
-        /// </summary>
-        public int DistanceHole
-        {
-            get => _distanceHole;
-            set
-            {
-                if (value < 15 || value > 25)
-                {
-                    throw new ArgumentNullException();
-                }
-
-                _distanceHole = value;
-            }
-        }
-
-        #endregion
-
-        #region Private fields
 
         /// <summary>
         ///     Толщина ленты
@@ -152,18 +51,94 @@ namespace BeltModel
         #region Properties
 
         /// <summary>
+        ///     Диаметр язычка бляшки
+        /// </summary>
+        public int DiametrTongueBuckle
+        {
+           get => _diametrTongueBuckle;
+           private set
+            {
+                if (value > BeltValidator.maxDiametrTongueBuckleValue || value < BeltValidator.minDiametrTongueBuckleValue)
+                {
+                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minDiametrTongueBuckleValue + " до " + BeltValidator.maxDiametrTongueBuckleValue);
+                }
+                _diametrTongueBuckle = value;
+            }
+        }
+
+        /// <summary>
+        ///     Длина бляшки
+        /// </summary>
+        public int LengthBuckle
+        {
+           get => _lengthBuckle;
+           private set
+            {
+
+                _lengthBuckle = value;
+            }
+        }
+
+        /// <summary>
+        ///     Ширина бляшки
+        /// </summary>
+        public int WidthBuckle
+        {
+            get => _widthBuckle;
+            private set
+            {
+                if (value > BeltValidator.maxWidthBuckleValue || value < BeltValidator.minWidthBuckleValue)
+                {
+                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minWidthBuckleValue + " до " + BeltValidator.maxWidthBuckleValue);
+                }
+                _widthBuckle = value;
+            }
+        }
+
+        /// <summary>
+        ///     Диаметр отверстий
+        /// </summary>
+        public int DiametrHole
+        {
+            get => _diametrHole;
+            private set
+            {
+                if (value != BeltValidator.diametrHoleValue)
+                {
+                    throw new ArgumentException("Значение должно быть равно " + BeltValidator.diametrHoleValue);
+                }
+                _diametrHole = value;
+            }
+        }
+
+        /// <summary>
+        ///     Расстояние между отверстиями
+        /// </summary>
+        public int DistanceHole
+        {
+            get => _distanceHole;
+            private set
+            {
+                if (value > BeltValidator.maxDistanceHoleValue || value < BeltValidator.minDistanceHoleValue)
+                {
+                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minDistanceHoleValue + " до " + BeltValidator.maxDistanceHoleValue);
+                }
+                _distanceHole = value;
+            }
+        }
+
+        /// <summary>
         ///     Длина ленты
         /// </summary>
         public int LengthTape
         {
             get => _lengthTape;
-            set
+            private set
             {
-                if (value < 20 || value > 30)
+                if (value > BeltValidator.maxLengthTapeValue || value < BeltValidator.minLengthTapeValue)
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minLengthTapeValue + " до " + BeltValidator.maxLengthTapeValue);
                 }
-
                 _lengthTape = value;
             }
         }
@@ -174,13 +149,12 @@ namespace BeltModel
         public int HeightTape
         {
             get => _heightTape;
-            set
+           private set
             {
-                if (value < 800 || value > 1200)
+                if(value > BeltValidator.maxHeightTapeValue || value < BeltValidator.minHeightTapeValue)
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minHeightTapeValue + " до " + BeltValidator.maxHeightTapeValue);
                 }
-
                 _heightTape = value;
             }
         }
@@ -191,13 +165,12 @@ namespace BeltModel
         public int WidthTape
         {
             get => _widthTape;
-            set
+           private set
             {
-                if (value != 4)
+                if (value > BeltValidator.maxWidthTapeValue || value < BeltValidator.minWidthTapeValue)
                 {
-                    throw new ArgumentNullException();
+                    throw new ArgumentException("Значение должно быть в диапазоне от" + BeltValidator.minWidthTapeValue + " до " + BeltValidator.maxWidthTapeValue);
                 }
-
                 _widthTape = value;
             }
         }
@@ -224,7 +197,7 @@ namespace BeltModel
                 throw new ArgumentException("Диаметр язычка не может быть больше диаметра отверстий!");
             }
 
-            if(lengthBuckle < lengthTape)
+            if(widthBuckle < widthTape)
             {
                 throw new ArgumentException("Ширина бляшки не должна быть меньшеширины ленты! ");
             }

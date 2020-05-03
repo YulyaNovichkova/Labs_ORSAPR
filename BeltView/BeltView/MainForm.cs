@@ -40,8 +40,8 @@ namespace BeltView
             {
                 isCorrectParameters = true;
                 parameters = new BeltParam((Convert.ToInt32(lengthTapeTextBox.Text)),
-                    (Convert.ToInt32(widthTapeTextBox.Text)),
                     (Convert.ToInt32(heightTapeTextBox.Text)),
+                    (Convert.ToInt32(widthTapeTextBox.Text)),
                     (Convert.ToInt32(diametrHoleTextBox.Text)),
                     (Convert.ToInt32(distanceHoleTextBox.Text)),
                     (Convert.ToInt32(lengthBuckleTextBox.Text)),
@@ -97,7 +97,50 @@ namespace BeltView
                     {
                         case "widthTapeTextBox":
                             {
-                                textBox.ForeColor = Convert.ToInt32(textBox.Text) > 100 || Convert.ToInt32(textBox.Text) < 10 ? Color.Red : Color.Black;
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value > 30 || value < 20 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "lengthTapeTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value > 1200 || value < 800 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "heightTapeTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value != 4 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "diametrHoleTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value != 4 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "distanceHoleTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value > 25 || value < 15 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "lengthBuckleTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value > 30 || value < 20 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "widthBuckleTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value > 60 || value < 40 ? Color.Red : Color.Black;
+                                break;
+                            }
+                        case "diametrTongueBuckleTextBox":
+                            {
+                                int value = Convert.ToInt32(textBox.Text);
+                                textBox.ForeColor = value > 4 || value < 3 ? Color.Red : Color.Black;
                                 break;
                             }
                         default:

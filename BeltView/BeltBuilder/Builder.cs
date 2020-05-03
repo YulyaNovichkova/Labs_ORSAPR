@@ -64,14 +64,12 @@ namespace BeltBuilder
             ksEntity planeXOY = part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
             BuildTape(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape, beltParam.HeightTape);
 
-            BuildHole(part, planeXOY, beltParam.HeightTape - 50, beltParam.LengthTape / 2, beltParam.WidthTape, beltParam.DiametrHole / 2, beltParam.DistanceHole);
+            BuildHole(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape, beltParam.HeightTape, beltParam.DiametrHole / 2, beltParam.DistanceHole);
 
-            BuildBuckle(part, planeXOY, beltParam.LengthBuckle, -beltParam.WidthBuckle, beltParam.WidthTape);
+            BuildBuckle(part, planeXOY, beltParam.LengthBuckle, beltParam.WidthBuckle, beltParam.HeightTape, beltParam.WidthTape);
 
-            BuildHoleBuckle(part, planeXOY, beltParam.LengthBuckle, -beltParam.WidthBuckle, beltParam.WidthTape);
-                     
-            ksEntity planeYOZ = part.GetDefaultEntity((short)Obj3dType.o3d_planeYOZ);
-            BuildTongueBuckle(part, planeYOZ, -beltParam.LengthTape / 2, beltParam.DiametrTongueBuckle / 2, beltParam.WidthBuckle);
+            ksEntity planeYOZ = part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
+            BuildTongueBuckle(part, planeYOZ, beltParam.WidthTape, beltParam.DiametrTongueBuckle / 2, beltParam.LengthBuckle);
         }
 
         /// <summary>
@@ -92,9 +90,9 @@ namespace BeltBuilder
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
             document2D.ksLineSeg(0, 0, 0, length, 1);
-            document2D.ksLineSeg(0, length, height, length, 1);
-            document2D.ksLineSeg(height, length, height, 0, 1);
-            document2D.ksLineSeg(height, 0, 0, 0, 1);
+            document2D.ksLineSeg(0, length, width, length, 1);
+            document2D.ksLineSeg(width, length, width, 0, 1);
+            document2D.ksLineSeg(width, 0, 0, 0, 1);
             sketchDefinition.EndEdit();
 
             ///Выдавливание
@@ -103,7 +101,7 @@ namespace BeltBuilder
             extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
-            extrudeParam.depthNormal = width;
+            extrudeParam.depthNormal = height;
             extrude.Create();
         }
 
@@ -115,7 +113,7 @@ namespace BeltBuilder
         /// <param name="length"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void BuildBuckle(ksPart part, ksEntity plane, int length, int width, int height)
+        public void BuildBuckle(ksPart part, ksEntity plane, int length, int width, int height, int widthTape)
         {
             ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
@@ -124,10 +122,16 @@ namespace BeltBuilder
 
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
-            document2D.ksLineSeg(0, 0 + (width + 10) / 2, 0, length + (width - 10) / 2, 1);
-            document2D.ksLineSeg(0, length + (width - 10) / 2, width, length + (width - 10) / 2, 1);
-            document2D.ksLineSeg(width, length + (width - 10) / 2, width, 0 + (width + 10) / 2, 1);
-            document2D.ksLineSeg(width, 0 + (width + 10) / 2, 0, 0 + (width + 10) / 2, 1);
+            document2D.ksLineSeg(-(width - widthTape -2) / 2, -2, (width + widthTape -2) / 2, -2, 1);
+            document2D.ksLineSeg(-(width - widthTape -2) / 2, -2, -(width - widthTape-2) / 2, -length, 1);
+            document2D.ksLineSeg(-(width - widthTape -2) / 2, -length, (width + widthTape-2) / 2, -length, 1);
+            document2D.ksLineSeg((width + widthTape-2) / 2, -length, (width + widthTape-2) / 2, -2, 1);
+
+            document2D.ksLineSeg(-(width - widthTape ) / 2, 0, (width + widthTape) / 2, 0, 1);
+            document2D.ksLineSeg(-(width - widthTape) / 2, 0, -(width - widthTape) / 2, -length-2, 1);
+            document2D.ksLineSeg(-(width - widthTape) / 2, -length-2, (width + widthTape) / 2, -length-2, 1);
+            document2D.ksLineSeg((width + widthTape) / 2, -length-2, (width + widthTape) / 2, 0, 1);
+
             sketchDefinition.EndEdit();
 
             ///Выдавливание
@@ -137,41 +141,8 @@ namespace BeltBuilder
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
             extrudeParam.depthNormal = height;
-            extrude.Create();
+            extrude.Create(); 
 
-        }
-
-        /// <summary>
-        ///     Построение отверстия в бляшки
-        /// </summary>
-        /// <param name="part"></param>
-        /// <param name="plane"></param>
-        /// <param name="length"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        public void BuildHoleBuckle(ksPart part, ksEntity plane, int length, int width, int height)
-        {
-            ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
-            ksSketchDefinition sketchDefinition = sketch.GetDefinition();
-            sketchDefinition.SetPlane(plane);
-            sketch.Create();
-
-            // Входим в режим редактирования эскиза
-            ksDocument2D document2D = sketchDefinition.BeginEdit();
-            document2D.ksLineSeg(-2, 1 + (width + 12) / 2, -2, ((length - 2) + (width - 8) / 2) - 1, 1);
-            document2D.ksLineSeg(-2, -1 + ((length - 2) + (width - 8) / 2), width + 2, -1 + ((length - 2) + (width - 8) / 2), 1);
-            document2D.ksLineSeg(width + 2, ((length - 2) + (width - 8) / 2) - 1, width + 2, 1 + (width + 12) / 2, 1);
-            document2D.ksLineSeg(width + 2, 1 + (width + 12) / 2, -2, 1 + (width + 12) / 2, 1);
-            sketchDefinition.EndEdit();
-
-            ///Выдавливание
-            ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_cutExtrusion);
-            ksCutExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtReverse;
-            extrudeDefinition.SetSketch(sketch);
-            ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
-            extrudeParam.depthReverse = height;
-            extrude.Create();
         }
 
         /// <summary>
@@ -196,7 +167,7 @@ namespace BeltBuilder
             int temp = 0;
             for (var i = 0; i < 4; i++)
             {
-                document2D.ksCircle(length - temp, width, diametr, 1);
+                document2D.ksCircle(width/2, length-20-temp, diametr, 1);
                 temp = temp + distance;
             }
 
@@ -229,17 +200,17 @@ namespace BeltBuilder
 
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
-            document2D.ksCircle(0, width, diametr, 1);
+            document2D.ksCircle(width/2, 0, diametr, 1);
 
             sketchDefinition.EndEdit();
 
             ///Выдавливание
             ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_bossExtrusion);
             ksBossExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
+            extrudeDefinition.directionType = (short)Direction_Type.dtReverse;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
-            extrudeParam.depthNormal = height;
+            extrudeParam.depthReverse = height;
             extrude.Create();
         }
 

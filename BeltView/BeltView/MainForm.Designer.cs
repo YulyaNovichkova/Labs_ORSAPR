@@ -73,20 +73,21 @@
             // 
             // lengthTapeTextBox
             // 
-            this.lengthTapeTextBox.Location = new System.Drawing.Point(80, 45);
+            this.lengthTapeTextBox.Location = new System.Drawing.Point(80, 22);
             this.lengthTapeTextBox.Name = "lengthTapeTextBox";
             this.lengthTapeTextBox.Size = new System.Drawing.Size(48, 20);
-            this.lengthTapeTextBox.TabIndex = 2;
-            this.lengthTapeTextBox.Text = "20";
+            this.lengthTapeTextBox.TabIndex = 1;
+            this.lengthTapeTextBox.Text = "800";
+            this.lengthTapeTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.lengthTapeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // widthTapeTextBox
             // 
-            this.widthTapeTextBox.Location = new System.Drawing.Point(80, 19);
+            this.widthTapeTextBox.Location = new System.Drawing.Point(80, 45);
             this.widthTapeTextBox.Name = "widthTapeTextBox";
             this.widthTapeTextBox.Size = new System.Drawing.Size(48, 20);
-            this.widthTapeTextBox.TabIndex = 1;
-            this.widthTapeTextBox.Text = "800";
+            this.widthTapeTextBox.TabIndex = 2;
+            this.widthTapeTextBox.Text = "20";
             this.widthTapeTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.widthTapeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
@@ -97,6 +98,7 @@
             this.heightTapeTextBox.Size = new System.Drawing.Size(48, 20);
             this.heightTapeTextBox.TabIndex = 3;
             this.heightTapeTextBox.Text = "4";
+            this.heightTapeTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.heightTapeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // diametrHoleTextBox
@@ -106,6 +108,7 @@
             this.diametrHoleTextBox.Size = new System.Drawing.Size(48, 20);
             this.diametrHoleTextBox.TabIndex = 4;
             this.diametrHoleTextBox.Text = "4";
+            this.diametrHoleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.diametrHoleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // distanceHoleTextBox
@@ -115,24 +118,27 @@
             this.distanceHoleTextBox.Size = new System.Drawing.Size(48, 20);
             this.distanceHoleTextBox.TabIndex = 5;
             this.distanceHoleTextBox.Text = "15";
+            this.distanceHoleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.distanceHoleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // lengthBuckleTextBox
             // 
-            this.lengthBuckleTextBox.Location = new System.Drawing.Point(80, 19);
+            this.lengthBuckleTextBox.Location = new System.Drawing.Point(80, 45);
             this.lengthBuckleTextBox.Name = "lengthBuckleTextBox";
             this.lengthBuckleTextBox.Size = new System.Drawing.Size(48, 20);
-            this.lengthBuckleTextBox.TabIndex = 6;
-            this.lengthBuckleTextBox.Text = "40";
+            this.lengthBuckleTextBox.TabIndex = 7;
+            this.lengthBuckleTextBox.Text = "20";
+            this.lengthBuckleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.lengthBuckleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // widthBuckleTextBox
             // 
-            this.widthBuckleTextBox.Location = new System.Drawing.Point(80, 45);
+            this.widthBuckleTextBox.Location = new System.Drawing.Point(80, 19);
             this.widthBuckleTextBox.Name = "widthBuckleTextBox";
             this.widthBuckleTextBox.Size = new System.Drawing.Size(48, 20);
-            this.widthBuckleTextBox.TabIndex = 7;
-            this.widthBuckleTextBox.Text = "20";
+            this.widthBuckleTextBox.TabIndex = 6;
+            this.widthBuckleTextBox.Text = "40";
+            this.widthBuckleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.widthBuckleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // diametrTongueBuckleTextBox
@@ -142,6 +148,7 @@
             this.diametrTongueBuckleTextBox.Size = new System.Drawing.Size(48, 20);
             this.diametrTongueBuckleTextBox.TabIndex = 8;
             this.diametrTongueBuckleTextBox.Text = "3";
+            this.diametrTongueBuckleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             this.diametrTongueBuckleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // groupBox1
@@ -315,7 +322,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 48);
+            this.label6.Location = new System.Drawing.Point(6, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 13;
@@ -324,7 +331,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 22);
+            this.label7.Location = new System.Drawing.Point(6, 48);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 14;
