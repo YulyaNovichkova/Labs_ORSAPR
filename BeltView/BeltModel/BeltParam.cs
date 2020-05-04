@@ -202,7 +202,7 @@ namespace BeltModel
 
             if(widthBuckle < widthTape)
             {
-                throw new ArgumentException("Ширина бляшки не должна быть меньшеширины ленты! ");
+                throw new ArgumentException("Ширина бляшки не должна быть меньше ширины ленты! ");
             }
 
             LengthTape = lengthTape;
