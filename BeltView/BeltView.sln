@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeltModel", "BeltModel\Belt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeltBuilder", "BeltBuilder\BeltBuilder.csproj", "{593C21B4-83E2-4C9F-8042-5384D01CE2EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeltModelTests", "BeltModelTests\BeltModelTests.csproj", "{70ED1898-4C88-412A-83ED-A4B62F4E8737}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{593C21B4-83E2-4C9F-8042-5384D01CE2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{593C21B4-83E2-4C9F-8042-5384D01CE2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{593C21B4-83E2-4C9F-8042-5384D01CE2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70ED1898-4C88-412A-83ED-A4B62F4E8737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70ED1898-4C88-412A-83ED-A4B62F4E8737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70ED1898-4C88-412A-83ED-A4B62F4E8737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70ED1898-4C88-412A-83ED-A4B62F4E8737}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

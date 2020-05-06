@@ -193,7 +193,8 @@ namespace BeltModel
         /// <param name="lengthBuckle"></param>
         /// <param name="widthBuckle"></param>
         /// <param name="diametrTongueBuckle"></param>
-        public BeltParam(int lengthTape, int heightTape, int widthTape, int diametrHole, int distanceHole, int lengthBuckle, int widthBuckle, int diametrTongueBuckle)
+        public BeltParam(int lengthTape, int heightTape, int widthTape, int diametrHole, 
+            int distanceHole, int lengthBuckle, int widthBuckle, int diametrTongueBuckle)
         {
             if(diametrTongueBuckle > diametrHole)
             {
