@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using BeltModel;
 using BeltBuilder;
 using System.Drawing;
+using System.Drawing.Text;
 
 namespace BeltView
 {
@@ -39,14 +40,14 @@ namespace BeltView
             try
             {
                 isCorrectParameters = true;
-                parameters = new BeltParam((Convert.ToInt32(lengthTapeTextBox.Text)),
-                    (Convert.ToInt32(heightTapeTextBox.Text)),
-                    (Convert.ToInt32(widthTapeTextBox.Text)),
-                    (Convert.ToInt32(diametrHoleTextBox.Text)),
-                    (Convert.ToInt32(distanceHoleTextBox.Text)),
-                    (Convert.ToInt32(lengthBuckleTextBox.Text)),
-                    (Convert.ToInt32(widthBuckleTextBox.Text)),
-                    (Convert.ToInt32(diametrTongueBuckleTextBox.Text)));
+                parameters = new BeltParam((int.Parse(lengthTapeTextBox.Text)),
+                    (int.Parse(heightTapeTextBox.Text)),
+                    (int.Parse(widthTapeTextBox.Text)),
+                    (int.Parse(diametrHoleTextBox.Text)),
+                    (int.Parse(distanceHoleTextBox.Text)),
+                    (int.Parse(lengthBuckleTextBox.Text)),
+                    (int.Parse(widthBuckleTextBox.Text)),
+                    (int.Parse(diametrTongueBuckleTextBox.Text)));
                 item = Convert.ToString(buckleComboBox.Text);
             }
             catch (ArgumentException exception)

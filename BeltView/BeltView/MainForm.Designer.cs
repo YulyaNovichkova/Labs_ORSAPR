@@ -50,14 +50,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buckleComboBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.buckleComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -296,6 +296,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры бляшки";
             // 
+            // buckleComboBox
+            // 
+            this.buckleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.buckleComboBox.FormattingEnabled = true;
+            this.buckleComboBox.Items.AddRange(new object[] {
+            "Прямоугольник",
+            "Треугольник"});
+            this.buckleComboBox.Location = new System.Drawing.Point(6, 122);
+            this.buckleComboBox.Name = "buckleComboBox";
+            this.buckleComboBox.Size = new System.Drawing.Size(156, 21);
+            this.buckleComboBox.TabIndex = 22;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 106);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Форма бляшки:";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -349,27 +370,6 @@
             this.label8.Size = new System.Drawing.Size(53, 26);
             this.label8.TabIndex = 15;
             this.label8.Text = "Диаметр\r\nязычка:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 106);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 13);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "Форма бляшки:";
-            // 
-            // buckleComboBox
-            // 
-            this.buckleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.buckleComboBox.FormattingEnabled = true;
-            this.buckleComboBox.Items.AddRange(new object[] {
-            "Прямоугольник",
-            "Треугольник"});
-            this.buckleComboBox.Location = new System.Drawing.Point(6, 122);
-            this.buckleComboBox.Name = "buckleComboBox";
-            this.buckleComboBox.Size = new System.Drawing.Size(156, 21);
-            this.buckleComboBox.TabIndex = 22;
             // 
             // MainForm
             // 
