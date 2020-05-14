@@ -58,10 +58,7 @@ namespace BeltModel
            get => _diametrTongueBuckle;
            private set
             {
-                if (value > 5 || value < 3)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 3 до 5");
-                }
+                Comparison(_diametrTongueBuckle, 3, 5);
                 _diametrTongueBuckle = value;
             }
         }
@@ -74,10 +71,7 @@ namespace BeltModel
            get => _lengthBuckle;
            private set
             {
-                if (value > 30 || value < 20)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 20 до 30");
-                }
+                Comparison(_lengthBuckle, 20, 30);
                 _lengthBuckle = value;
             }
         }
@@ -90,10 +84,7 @@ namespace BeltModel
             get => _widthBuckle;
             private set
             {
-                if (value > 42 || value < 22)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 22 до 42");
-                }
+                Comparison(_widthBuckle, 22, 42);
                 _widthBuckle = value;
             }
         }
@@ -106,10 +97,7 @@ namespace BeltModel
             get => _diametrHole;
             private set
             {
-                if (value > 5 || value < 3)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 3 до 5");
-                }
+                Comparison(_diametrHole, 3, 5);
                 _diametrHole = value;
             }
         }
@@ -122,10 +110,7 @@ namespace BeltModel
             get => _distanceHole;
             private set
             {
-                if (value > 25 || value < 15)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 15 до 25");
-                }
+                Comparison(_distanceHole, 15, 25);
                 _distanceHole = value;
             }
         }
@@ -138,10 +123,7 @@ namespace BeltModel
             get => _lengthTape;
             private set
             {
-                if (value > 1200 || value < 800)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 800 до 1200");
-                }
+                Comparison(_lengthTape, 800, 1200);
                 _lengthTape = value;
             }
         }
@@ -154,10 +136,7 @@ namespace BeltModel
             get => _heightTape;
            private set
             {
-                if(value > 4 || value < 3)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 3 до 4");
-                }
+                Comparison(_heightTape, 3, 4);
                 _heightTape = value;
             }
         }
@@ -170,11 +149,26 @@ namespace BeltModel
             get => _widthTape;
            private set
             {
-                if (value > 40 || value < 20)
-                {
-                    throw new ArgumentException("Значение должно быть в диапазоне от 20 до 40");
-                }
+                Comparison(_widthTape, 20, 40);
                 _widthTape = value;
+            }
+        }
+
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        ///     Метод сравнения числа с диапазоном допустимых значений
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        public void Comparison (int value, int min, int max)
+        {
+            if (value < min || value > max)
+            {
+                throw new ArgumentException("Значение должно быть в диапазоне от " + min +" до " + max);
             }
         }
 

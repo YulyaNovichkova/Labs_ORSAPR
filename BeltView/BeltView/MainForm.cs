@@ -48,7 +48,7 @@ namespace BeltView
                     (int.Parse(lengthBuckleTextBox.Text)),
                     (int.Parse(widthBuckleTextBox.Text)),
                     (int.Parse(diametrTongueBuckleTextBox.Text)));
-                item = Convert.ToString(buckleComboBox.Text);
+                item = buckleComboBox.Text;
             }
             catch (ArgumentException exception)
             {
