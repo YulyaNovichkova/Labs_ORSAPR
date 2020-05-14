@@ -56,6 +56,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.buckleComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -63,7 +65,7 @@
             // 
             // buildButton
             // 
-            this.buildButton.Location = new System.Drawing.Point(12, 306);
+            this.buildButton.Location = new System.Drawing.Point(12, 356);
             this.buildButton.Name = "buildButton";
             this.buildButton.Size = new System.Drawing.Size(168, 23);
             this.buildButton.TabIndex = 9;
@@ -276,6 +278,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.buckleComboBox);
+            this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
@@ -287,7 +291,7 @@
             this.groupBox3.Controls.Add(this.diametrTongueBuckleTextBox);
             this.groupBox3.Location = new System.Drawing.Point(12, 197);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(168, 103);
+            this.groupBox3.Size = new System.Drawing.Size(168, 153);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Параметры бляшки";
@@ -346,17 +350,38 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Диаметр\r\nязычка:";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 106);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Форма бляшки:";
+            // 
+            // buckleComboBox
+            // 
+            this.buckleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.buckleComboBox.FormattingEnabled = true;
+            this.buckleComboBox.Items.AddRange(new object[] {
+            "Прямоугольник",
+            "Треугольник"});
+            this.buckleComboBox.Location = new System.Drawing.Point(6, 122);
+            this.buckleComboBox.Name = "buckleComboBox";
+            this.buckleComboBox.Size = new System.Drawing.Size(156, 21);
+            this.buckleComboBox.TabIndex = 22;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(195, 340);
+            this.ClientSize = new System.Drawing.Size(192, 390);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buildButton);
-            this.MaximumSize = new System.Drawing.Size(211, 379);
-            this.MinimumSize = new System.Drawing.Size(211, 379);
+            this.MaximumSize = new System.Drawing.Size(208, 429);
+            this.MinimumSize = new System.Drawing.Size(208, 429);
             this.Name = "MainForm";
             this.Text = "Belt";
             this.groupBox1.ResumeLayout(false);
@@ -398,6 +423,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox buckleComboBox;
+        private System.Windows.Forms.Label label17;
     }
 }
 

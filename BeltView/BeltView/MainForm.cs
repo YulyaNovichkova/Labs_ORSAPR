@@ -17,6 +17,7 @@ namespace BeltView
         #region Private fields
 
         private BeltParam parameters;
+        private string item;
 
         #endregion
 
@@ -25,6 +26,7 @@ namespace BeltView
         public MainForm()
         {
             InitializeComponent();
+            buckleComboBox.SelectedItem = "Прямоугольник";
         }
 
         #endregion
@@ -45,6 +47,7 @@ namespace BeltView
                     (Convert.ToInt32(lengthBuckleTextBox.Text)),
                     (Convert.ToInt32(widthBuckleTextBox.Text)),
                     (Convert.ToInt32(diametrTongueBuckleTextBox.Text)));
+                item = Convert.ToString(buckleComboBox.Text);
             }
             catch (ArgumentException exception)
             {
@@ -56,7 +59,7 @@ namespace BeltView
             if (isCorrectParameters)
             {
                 _builder.StartKompas();
-                _builder.Build(parameters);
+                _builder.Build(parameters, item);
             }
         }
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
