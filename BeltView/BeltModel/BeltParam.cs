@@ -58,9 +58,9 @@ namespace BeltModel
            get => _diametrTongueBuckle;
            private set
             {
-                if (value > BeltValidator.maxDiametrTongueBuckleValue || value < BeltValidator.minDiametrTongueBuckleValue)
+                if (value > 5 || value < 3)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minDiametrTongueBuckleValue + " до " + BeltValidator.maxDiametrTongueBuckleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 3 до 5");
                 }
                 _diametrTongueBuckle = value;
             }
@@ -74,9 +74,9 @@ namespace BeltModel
            get => _lengthBuckle;
            private set
             {
-                if (value > BeltValidator.maxLengthBuckleValue || value < BeltValidator.minLengthBuckleValue)
+                if (value > 30 || value < 20)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minLengthBuckleValue + " до " + BeltValidator.maxLengthBuckleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 20 до 30");
                 }
                 _lengthBuckle = value;
             }
@@ -90,9 +90,9 @@ namespace BeltModel
             get => _widthBuckle;
             private set
             {
-                if (value > BeltValidator.maxWidthBuckleValue || value < BeltValidator.minWidthBuckleValue)
+                if (value > 42 || value < 22)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minWidthBuckleValue + " до " + BeltValidator.maxWidthBuckleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 22 до 42");
                 }
                 _widthBuckle = value;
             }
@@ -106,9 +106,9 @@ namespace BeltModel
             get => _diametrHole;
             private set
             {
-                if (value > BeltValidator.maxDiametrHoleValue || value < BeltValidator.minDiametrHoleValue)
+                if (value > 5 || value < 3)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minDiametrHoleValue + " до " + BeltValidator.maxDiametrHoleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 3 до 5");
                 }
                 _diametrHole = value;
             }
@@ -122,9 +122,9 @@ namespace BeltModel
             get => _distanceHole;
             private set
             {
-                if (value > BeltValidator.maxDistanceHoleValue || value < BeltValidator.minDistanceHoleValue)
+                if (value > 25 || value < 15)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minDistanceHoleValue + " до " + BeltValidator.maxDistanceHoleValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 15 до 25");
                 }
                 _distanceHole = value;
             }
@@ -138,9 +138,9 @@ namespace BeltModel
             get => _lengthTape;
             private set
             {
-                if (value > BeltValidator.maxLengthTapeValue || value < BeltValidator.minLengthTapeValue)
+                if (value > 1200 || value < 800)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minLengthTapeValue + " до " + BeltValidator.maxLengthTapeValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 800 до 1200");
                 }
                 _lengthTape = value;
             }
@@ -154,9 +154,9 @@ namespace BeltModel
             get => _heightTape;
            private set
             {
-                if(value > BeltValidator.maxHeightTapeValue || value < BeltValidator.minHeightTapeValue)
+                if(value > 4 || value < 3)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minHeightTapeValue + " до " + BeltValidator.maxHeightTapeValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 3 до 4");
                 }
                 _heightTape = value;
             }
@@ -170,9 +170,9 @@ namespace BeltModel
             get => _widthTape;
            private set
             {
-                if (value > BeltValidator.maxWidthTapeValue || value < BeltValidator.minWidthTapeValue)
+                if (value > 40 || value < 20)
                 {
-                    throw new ArgumentException("Значение должно быть в диапазоне от " + BeltValidator.minWidthTapeValue + " до " + BeltValidator.maxWidthTapeValue);
+                    throw new ArgumentException("Значение должно быть в диапазоне от 20 до 40");
                 }
                 _widthTape = value;
             }

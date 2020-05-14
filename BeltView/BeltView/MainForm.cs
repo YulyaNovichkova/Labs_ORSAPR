@@ -100,50 +100,50 @@ namespace BeltView
                     {
                         case "widthTapeTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxWidthTapeValue ||
-                                    value < BeltValidator.minWidthTapeValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 40 ||
+                                    value < 20 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "lengthTapeTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxLengthTapeValue || 
-                                    value < BeltValidator.minLengthTapeValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 1200 || 
+                                    value < 800 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "heightTapeTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxHeightTapeValue || 
-                                    value < BeltValidator.minHeightTapeValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 4 || 
+                                    value < 3 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "diametrHoleTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxDiametrHoleValue ||
-                                    value < BeltValidator.minDiametrHoleValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 5 ||
+                                    value < 3 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "distanceHoleTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxDistanceHoleValue || 
-                                    value < BeltValidator.minDistanceHoleValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 25 || 
+                                    value < 15 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "lengthBuckleTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxLengthBuckleValue || 
-                                    value < BeltValidator.minLengthBuckleValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 30 || 
+                                    value < 20 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "widthBuckleTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxWidthBuckleValue || 
-                                    value < BeltValidator.minWidthBuckleValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 42 || 
+                                    value < 22 ? Color.Red : Color.Black;
                                 break;
                             }
                         case "diametrTongueBuckleTextBox":
                             {
-                                textBox.ForeColor = value > BeltValidator.maxDiametrTongueBuckleValue || 
-                                    value < BeltValidator.minDiametrTongueBuckleValue ? Color.Red : Color.Black;
+                                textBox.ForeColor = value > 5 || 
+                                    value < 3 ? Color.Red : Color.Black;
                                 break;
                             }
                         default:
