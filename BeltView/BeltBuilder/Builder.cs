@@ -54,7 +54,7 @@ namespace BeltBuilder
         ///     Построение ремня
         /// </summary>
         /// <param name="beltParam"></param>
-        public void Build(BeltParam beltParam, string item)
+        public void Build(BeltParam beltParam, ParameterType item)
         {
             ksDocument3D document3D = _kompasObject.Document3D();
             document3D.Create();
@@ -66,7 +66,7 @@ namespace BeltBuilder
 
             BuildHole(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape, beltParam.HeightTape, beltParam.DiametrHole / 2, beltParam.DistanceHole);
 
-            if (item == "Треугольник")
+            if (item == ParameterType.Triangle)
             {
                 BuildTriangularBuckle(part, planeXOY, beltParam.LengthBuckle, beltParam.HeightTape, beltParam.WidthTape);
             }

@@ -18,8 +18,9 @@ namespace BeltView
         #region Private fields
 
         private BeltParam parameters;
-        private string item;
 
+        private ParameterType item;
+       
         #endregion
 
         #region Constructor
@@ -27,7 +28,8 @@ namespace BeltView
         public MainForm()
         {
             InitializeComponent();
-            buckleComboBox.SelectedItem = "Прямоугольник";
+            //buckleComboBox.SelectedItem = "Прямоугольник";
+            buckleComboBox.DataSource = Enum.GetValues(typeof(ParameterType));
         }
 
         #endregion
@@ -48,7 +50,6 @@ namespace BeltView
                     (int.Parse(lengthBuckleTextBox.Text)),
                     (int.Parse(widthBuckleTextBox.Text)),
                     (int.Parse(diametrTongueBuckleTextBox.Text)));
-                item = buckleComboBox.Text;
             }
             catch (ArgumentException exception)
             {
@@ -103,7 +104,7 @@ namespace BeltView
                                 textBox.ForeColor = value > 40 ||
                                     value < 20 ? Color.Red : Color.Black;
                                 break;
-                            }
+                            } 
                         case "lengthTapeTextBox":
                             {
                                 textBox.ForeColor = value > 1200 || 
@@ -156,5 +157,16 @@ namespace BeltView
                 }
             }
         }
+
+        /// <summary>
+        ///     Свойство выбора доступных значений.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buckleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            item = (ParameterType) buckleComboBox.SelectedItem;            
+        }
+        
     }
 }

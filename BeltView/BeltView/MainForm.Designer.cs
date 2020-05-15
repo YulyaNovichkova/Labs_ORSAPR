@@ -300,13 +300,11 @@
             // 
             this.buckleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.buckleComboBox.FormattingEnabled = true;
-            this.buckleComboBox.Items.AddRange(new object[] {
-            "Прямоугольник",
-            "Треугольник"});
             this.buckleComboBox.Location = new System.Drawing.Point(6, 122);
             this.buckleComboBox.Name = "buckleComboBox";
             this.buckleComboBox.Size = new System.Drawing.Size(156, 21);
             this.buckleComboBox.TabIndex = 22;
+            this.buckleComboBox.SelectedIndexChanged += new System.EventHandler(this.buckleComboBox_SelectedIndexChanged);
             // 
             // label17
             // 
