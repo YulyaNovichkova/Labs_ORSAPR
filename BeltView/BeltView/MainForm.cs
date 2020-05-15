@@ -28,7 +28,6 @@ namespace BeltView
         public MainForm()
         {
             InitializeComponent();
-            //buckleComboBox.SelectedItem = "Прямоугольник";
             buckleComboBox.DataSource = Enum.GetValues(typeof(ParameterType));
         }
 

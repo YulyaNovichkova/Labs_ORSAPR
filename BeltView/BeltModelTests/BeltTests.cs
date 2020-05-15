@@ -10,28 +10,28 @@ namespace BeltModelTests
     public class BeltTests
     {
         [Test]
-        [TestCase(BeltValidator.maxLengthTapeValue + 1, 40, 4, 5, 25, 42, 30, 5,
+        [TestCase(1201, 40, 4, 5, 25, 42, 30, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением длины ленты")]
-        [TestCase(1200, BeltValidator.maxWidthTapeValue + 1, 4, 5, 25, 42, 30, 5,
+        [TestCase(1200, 41, 4, 5, 25, 42, 30, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением ширины ленты")]
-        [TestCase(1200, 40, BeltValidator.maxHeightTapeValue + 1, 5, 25, 42, 30, 5,
+        [TestCase(1200, 40, 5, 5, 25, 42, 30, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением толщины ленты")]
-        [TestCase(1200, 40, 4, BeltValidator.maxDiametrHoleValue + 1, 25, 42, 30, 5,
+        [TestCase(1200, 40, 4, 6, 25, 42, 30, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением диаметра отверстий")]
-        [TestCase(1200, 40, 4, 5, BeltValidator.maxDistanceHoleValue + 1, 42, 30, 5,
+        [TestCase(1200, 40, 4, 5, 26, 42, 30, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением расстояния между отверстиями")]
-        [TestCase(1200, 40, 4, 5, 25, BeltValidator.maxWidthBuckleValue + 1, 30, 5,
+        [TestCase(1200, 40, 4, 5, 25, 43, 30, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением ширины бляшки")]
-        [TestCase(1200, 40, 4, 5, 25, 42, BeltValidator.maxLengthBuckleValue + 1, 5,
+        [TestCase(1200, 40, 4, 5, 25, 42, 31, 5,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением длины бляшки")]
-        [TestCase(1200, 40, 4, 5, 25, 42, 30, BeltValidator.maxDiametrTongueBuckleValue + 1,
+        [TestCase(1200, 40, 4, 5, 25, 42, 30, 6,
             TestName =
                 "Тест на создание объекта BeltParam с некорректным значением диаметра язычка")]
         public void PlaneParameterConstructor_NegativeTest
