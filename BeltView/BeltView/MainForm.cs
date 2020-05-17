@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using BeltModel;
 using BeltBuilder;
 using System.Drawing;
-using System.Drawing.Text;
+using System.Collections.Generic;
 
 namespace BeltView
 {
@@ -17,10 +17,13 @@ namespace BeltView
 
         #region Private fields
 
-        private BeltParam parameters;
+        private BeltParam parameters = new BeltParam(800,3,20,3,15,20,22,3);
 
-        private ParameterType item;
-       
+        private BuckleType item;
+        /// <summary>
+        /// Поле, хранящее название TextBox и соответствующуе ему тип параметра.
+        /// </summary>
+        private Dictionary<TextBox, ParameterType> _fields;
         #endregion
 
         #region Constructor
@@ -28,7 +31,18 @@ namespace BeltView
         public MainForm()
         {
             InitializeComponent();
-            buckleComboBox.DataSource = Enum.GetValues(typeof(ParameterType));
+            buckleComboBox.DataSource = Enum.GetValues(typeof(BuckleType));
+            _fields = new Dictionary<TextBox, ParameterType>
+            {
+                {widthTapeTextBox, ParameterType.WidthTape},
+                {widthBuckleTextBox, ParameterType.WidthBuckle},
+                {lengthBuckleTextBox, ParameterType.LengthBuckle},
+                {lengthTapeTextBox, ParameterType.LengthTape},
+                {heightTapeTextBox, ParameterType.HeightTape },
+                {diametrHoleTextBox, ParameterType.DiametrHole },
+                {distanceHoleTextBox, ParameterType.DistanceHole },
+                {diametrTongueBuckleTextBox, ParameterType.DiametrTongueBuckle }
+            };
         }
 
         #endregion
@@ -59,8 +73,8 @@ namespace BeltView
 
             if (isCorrectParameters)
             {
-                _builder.StartKompas();
-                _builder.Build(parameters, item);
+                    _builder.StartKompas();
+                    _builder.Build(parameters, item);
             }
         }
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -92,62 +106,64 @@ namespace BeltView
             {
                 if (textBox.Text == "")
                 {
+                    textBox.ForeColor = Color.Black;
                 }
                 else
                 {
+                    textBox.ForeColor = Color.Black;
                     int value = Convert.ToInt32(textBox.Text);
-                    switch (textBox.Name)
+                    var type = _fields[textBox];
+                    try
                     {
-                        case "widthTapeTextBox":
-                            {
-                                textBox.ForeColor = value > 40 ||
-                                    value < 20 ? Color.Red : Color.Black;
+                        switch (type)
+                        {
+                            case ParameterType.LengthTape:
+                                {
+                                    parameters.Comparsion(value, 800, 1200);
+                                    break;
+                                }
+                            case ParameterType.WidthTape:
+                                {
+                                    parameters.Comparsion(value, 20, 40);
+                                    break;
+                                }
+                            case ParameterType.HeightTape:
+                                {
+                                    parameters.Comparsion(value, 3, 4);
+                                    break;
+                                }
+                            case ParameterType.DiametrHole:
+                                {
+                                    parameters.Comparsion(value, 3, 5);
+                                    break;
+                                }
+                            case ParameterType.DistanceHole:
+                                {
+                                    parameters.Comparsion(value, 15, 25);
+                                    break;
+                                }
+                            case ParameterType.LengthBuckle:
+                                {
+                                    parameters.Comparsion(value, 20, 30);
+                                    break;
+                                }
+                            case ParameterType.WidthBuckle:
+                                {
+                                   parameters.Comparsion(value, 22, 24);
+                                    break;
+                                }
+                            case ParameterType.DiametrTongueBuckle:
+                                {
+                                    parameters.Comparsion(value, 3, 5);
+                                    break;
+                                }
+                            default:
                                 break;
-                            } 
-                        case "lengthTapeTextBox":
-                            {
-                                textBox.ForeColor = value > 1200 || 
-                                    value < 800 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        case "heightTapeTextBox":
-                            {
-                                textBox.ForeColor = value > 4 || 
-                                    value < 3 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        case "diametrHoleTextBox":
-                            {
-                                textBox.ForeColor = value > 5 ||
-                                    value < 3 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        case "distanceHoleTextBox":
-                            {
-                                textBox.ForeColor = value > 25 || 
-                                    value < 15 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        case "lengthBuckleTextBox":
-                            {
-                                textBox.ForeColor = value > 30 || 
-                                    value < 20 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        case "widthBuckleTextBox":
-                            {
-                                textBox.ForeColor = value > 42 || 
-                                    value < 22 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        case "diametrTongueBuckleTextBox":
-                            {
-                                textBox.ForeColor = value > 5 || 
-                                    value < 3 ? Color.Red : Color.Black;
-                                break;
-                            }
-                        default:
-                            break;
+                        }
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        textBox.ForeColor = Color.Red;
                     }
                     buildButton.Enabled = !(diametrHoleTextBox.ForeColor == Color.Red || widthBuckleTextBox.ForeColor == Color.Red || 
                         lengthBuckleTextBox.ForeColor == Color.Red || distanceHoleTextBox.ForeColor == Color.Red ||
@@ -164,7 +180,7 @@ namespace BeltView
         /// <param name="e"></param>
         private void buckleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            item = (ParameterType) buckleComboBox.SelectedItem;            
+            item = (BuckleType) buckleComboBox.SelectedItem;            
         }
         
     }

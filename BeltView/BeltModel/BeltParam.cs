@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace BeltModel
 {
@@ -59,7 +58,7 @@ namespace BeltModel
            get => _diametrTongueBuckle;
            private set
             {
-                Comparison(value, 3, 5);
+                Comparsion(value, 3, 5);
                 _diametrTongueBuckle = value;
             }
         }
@@ -72,7 +71,7 @@ namespace BeltModel
            get => _lengthBuckle;
            private set
             {
-                Comparison(value, 20, 30);
+                Comparsion(value, 20, 30);
                 _lengthBuckle = value;
             }
         }
@@ -85,7 +84,7 @@ namespace BeltModel
             get => _widthBuckle;
             private set
             {
-                Comparison(value, 22, 42);
+                Comparsion(value, 22, 42);
                 _widthBuckle = value;
             }
         }
@@ -98,7 +97,7 @@ namespace BeltModel
             get => _diametrHole;
             private set
             {
-                Comparison(value, 3, 5);
+                Comparsion(value, 3, 5);
                 _diametrHole = value;
             }
         }
@@ -111,7 +110,7 @@ namespace BeltModel
             get => _distanceHole;
             private set
             {
-                Comparison(value, 15, 25);
+                Comparsion(value, 15, 25);
                 _distanceHole = value;
             }
         }
@@ -124,7 +123,7 @@ namespace BeltModel
             get => _lengthTape;
             private set
             {
-                Comparison(value, 800, 1200);
+                Comparsion(value, 800, 1200);
                 _lengthTape = value;
             }
         }
@@ -137,7 +136,7 @@ namespace BeltModel
             get => _heightTape;
            private set
             {
-                Comparison(value, 3, 4);
+                Comparsion(value, 3, 4);
                 _heightTape = value;
             }
         }
@@ -150,7 +149,7 @@ namespace BeltModel
             get => _widthTape;
            private set
             {
-                Comparison(value, 20, 40);
+                Comparsion(value, 20, 40);
                 _widthTape = value;
             }
         }
@@ -165,7 +164,7 @@ namespace BeltModel
         /// <param name="value"></param>
         /// <param name="min"></param>
         /// <param name="max"></param>
-        public void Comparison (int value, int min, int max)
+        public void Comparsion (int value, int min, int max)
         {
             if (value < min || value > max)
             {                

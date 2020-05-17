@@ -10,7 +10,6 @@ namespace BeltBuilder
     {
         private KompasObject _kompasObject;
 
-
         #region Public methods
 
         public void StartKompas()
@@ -54,7 +53,7 @@ namespace BeltBuilder
         ///     Построение ремня
         /// </summary>
         /// <param name="beltParam"></param>
-        public void Build(BeltParam beltParam, ParameterType item)
+        public void Build(BeltParam beltParam, BuckleType item)
         {
             ksDocument3D document3D = _kompasObject.Document3D();
             document3D.Create();
@@ -66,7 +65,7 @@ namespace BeltBuilder
 
             BuildHole(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape, beltParam.HeightTape, beltParam.DiametrHole / 2, beltParam.DistanceHole);
 
-            if (item == ParameterType.Triangle)
+            if (item == BuckleType.Triangle)
             {
                 BuildTriangularBuckle(part, planeXOY, beltParam.LengthBuckle, beltParam.HeightTape, beltParam.WidthTape);
             }
