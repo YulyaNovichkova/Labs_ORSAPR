@@ -6,18 +6,31 @@ using Kompas6Constants3D;
 
 namespace BeltBuilder
 {
+    /// <summary>
+    ///     Класс, взаимодействия с API Компас 3д
+    /// </summary>
     public class Builder
     {
+        #region Private fields
+
+        /// <summary>
+        ///     Хранит ссылку на экземпляр Компас 3Д
+        /// </summary>
         private KompasObject _kompasObject;
+
+        #endregion
 
         #region Public methods
 
+        /// <summary>
+        ///     Запуск Компас 3Д
+        /// </summary>
         public void StartKompas()
         {
             if (_kompasObject == null)
             {
                 var kompasType = Type.GetTypeFromProgID("KOMPAS.Application.5");
-                _kompasObject = (KompasObject)Activator.CreateInstance(kompasType);
+                _kompasObject = (KompasObject) Activator.CreateInstance(kompasType);
             }
 
             if (_kompasObject != null)
@@ -36,7 +49,7 @@ namespace BeltBuilder
                     {
                         var kompasType = Type.GetTypeFromProgID("KOMPAS.Application.5");
                         _kompasObject =
-                            (KompasObject)Activator.CreateInstance(kompasType);
+                            (KompasObject) Activator.CreateInstance(kompasType);
 
                         if (tried > 3)
                         {
@@ -58,25 +71,29 @@ namespace BeltBuilder
             ksDocument3D document3D = _kompasObject.Document3D();
             document3D.Create();
 
-            ksPart part = document3D.GetPart((short)Part_Type.pTop_Part);
+            ksPart part = document3D.GetPart((short) Part_Type.pTop_Part);
 
-            ksEntity planeXOY = part.GetDefaultEntity((short)Obj3dType.o3d_planeXOY);
-            BuildTape(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape, beltParam.HeightTape);
+            ksEntity planeXOY = part.GetDefaultEntity((short) Obj3dType.o3d_planeXOY);
+            BuildTape(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape,
+                beltParam.HeightTape);
 
-            BuildHole(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape, beltParam.HeightTape, beltParam.DiametrHole / 2, beltParam.DistanceHole);
+            BuildHole(part, planeXOY, beltParam.LengthTape, beltParam.WidthTape,
+                beltParam.HeightTape, beltParam.DiametrHole / 2, beltParam.DistanceHole);
 
             if (item == BuckleType.Triangle)
             {
-                BuildTriangularBuckle(part, planeXOY, beltParam.LengthBuckle, beltParam.HeightTape, beltParam.WidthTape);
+                BuildTriangularBuckle(part, planeXOY, beltParam.LengthBuckle,
+                    beltParam.HeightTape, beltParam.WidthTape);
             }
             else
             {
-                BuildBuckle(part, planeXOY, beltParam.LengthBuckle, beltParam.WidthBuckle, beltParam.HeightTape, beltParam.WidthTape);
-
+                BuildBuckle(part, planeXOY, beltParam.LengthBuckle, beltParam.WidthBuckle,
+                    beltParam.HeightTape, beltParam.WidthTape);
             }
 
-            ksEntity planeYOZ = part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
-            BuildTongueBuckle(part, planeYOZ, beltParam.WidthTape, beltParam.DiametrTongueBuckle / 2, beltParam.LengthBuckle);
+            ksEntity planeYOZ = part.GetDefaultEntity((short) Obj3dType.o3d_planeXOZ);
+            BuildTongueBuckle(part, planeYOZ, beltParam.WidthTape,
+                beltParam.DiametrTongueBuckle / 2, beltParam.LengthBuckle);
         }
 
         /// <summary>
@@ -87,9 +104,10 @@ namespace BeltBuilder
         /// <param name="length"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void BuildTape(ksPart part, ksEntity plane, int length, int width, int height)
+        public void BuildTape(ksPart part, ksEntity plane, int length, int width,
+            int height)
         {
-            ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
+            ksEntity sketch = part.NewEntity((short) Obj3dType.o3d_sketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
             sketchDefinition.SetPlane(plane);
             sketch.Create();
@@ -103,9 +121,9 @@ namespace BeltBuilder
             sketchDefinition.EndEdit();
 
             ///Выдавливание
-            ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_bossExtrusion);
+            ksEntity extrude = part.NewEntity((short) Obj3dType.o3d_bossExtrusion);
             ksBossExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
+            extrudeDefinition.directionType = (short) Direction_Type.dtNormal;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
             extrudeParam.depthNormal = height;
@@ -120,36 +138,50 @@ namespace BeltBuilder
         /// <param name="length"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void BuildBuckle(ksPart part, ksEntity plane, int length, int width, int height, int widthTape)
+        public void BuildBuckle(ksPart part, ksEntity plane, int length, int width,
+            int height, int widthTape)
         {
-            ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
+            ksEntity sketch = part.NewEntity((short) Obj3dType.o3d_sketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
             sketchDefinition.SetPlane(plane);
             sketch.Create();
 
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
-            document2D.ksLineSeg(-(width - widthTape -2) / 2, -2, (width + widthTape -2) / 2, -2, 1);
-            document2D.ksLineSeg(-(width - widthTape -2) / 2, -2, -(width - widthTape-2) / 2, -length, 1);
-            document2D.ksLineSeg(-(width - widthTape -2) / 2, -length, (width + widthTape-2) / 2, -length, 1);
-            document2D.ksLineSeg((width + widthTape-2) / 2, -length, (width + widthTape-2) / 2, -2, 1);
+            document2D.ksLineSeg(-(width - widthTape - 2) / 2, -2,
+                (width + widthTape - 2) / 2, -2, 1);
 
-            document2D.ksLineSeg(-(width - widthTape ) / 2, 0, (width + widthTape) / 2, 0, 1);
-            document2D.ksLineSeg(-(width - widthTape) / 2, 0, -(width - widthTape) / 2, -length-2, 1);
-            document2D.ksLineSeg(-(width - widthTape) / 2, -length-2, (width + widthTape) / 2, -length-2, 1);
-            document2D.ksLineSeg((width + widthTape) / 2, -length-2, (width + widthTape) / 2, 0, 1);
+            document2D.ksLineSeg(-(width - widthTape - 2) / 2, -2,
+                -(width - widthTape - 2) / 2, -length, 1);
+
+            document2D.ksLineSeg(-(width - widthTape - 2) / 2, -length,
+                (width + widthTape - 2) / 2, -length, 1);
+
+            document2D.ksLineSeg((width + widthTape - 2) / 2, -length,
+                (width + widthTape - 2) / 2, -2, 1);
+
+            document2D.ksLineSeg(-(width - widthTape) / 2, 0, (width + widthTape) / 2, 0,
+                1);
+
+            document2D.ksLineSeg(-(width - widthTape) / 2, 0, -(width - widthTape) / 2,
+                -length - 2, 1);
+
+            document2D.ksLineSeg(-(width - widthTape) / 2, -length - 2,
+                (width + widthTape) / 2, -length - 2, 1);
+
+            document2D.ksLineSeg((width + widthTape) / 2, -length - 2,
+                (width + widthTape) / 2, 0, 1);
 
             sketchDefinition.EndEdit();
 
             ///Выдавливание
-            ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_bossExtrusion);
+            ksEntity extrude = part.NewEntity((short) Obj3dType.o3d_bossExtrusion);
             ksBossExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
+            extrudeDefinition.directionType = (short) Direction_Type.dtNormal;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
             extrudeParam.depthNormal = height;
-            extrude.Create(); 
-
+            extrude.Create();
         }
 
         /// <summary>
@@ -162,28 +194,29 @@ namespace BeltBuilder
         /// <param name="height"></param>
         /// <param name="diametr"></param>
         /// <param name="distance"></param>
-        public void BuildHole(ksPart part, ksEntity plane, int length, int  width, int height, int diametr, int distance)
+        public void BuildHole(ksPart part, ksEntity plane, int length, int width,
+            int height, int diametr, int distance)
         {
-            ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
+            ksEntity sketch = part.NewEntity((short) Obj3dType.o3d_sketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
             sketchDefinition.SetPlane(plane);
             sketch.Create();
 
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
-            int temp = 0;
+            var temp = 0;
             for (var i = 0; i < 4; i++)
             {
-                document2D.ksCircle(width/2, length-20-temp, diametr, 1);
+                document2D.ksCircle(width / 2, length - 20 - temp, diametr, 1);
                 temp = temp + distance;
             }
 
             sketchDefinition.EndEdit();
 
             ///Выдавливание
-            ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_cutExtrusion);
+            ksEntity extrude = part.NewEntity((short) Obj3dType.o3d_cutExtrusion);
             ksCutExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtReverse;
+            extrudeDefinition.directionType = (short) Direction_Type.dtReverse;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
             extrudeParam.depthReverse = height;
@@ -198,23 +231,24 @@ namespace BeltBuilder
         /// <param name="width"></param>
         /// <param name="diametr"></param>
         /// <param name="height"></param>
-        public void BuildTongueBuckle(ksPart part, ksEntity plane, int width, int diametr, int height)
+        public void BuildTongueBuckle(ksPart part, ksEntity plane, int width, int diametr,
+            int height)
         {
-            ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
+            ksEntity sketch = part.NewEntity((short) Obj3dType.o3d_sketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
             sketchDefinition.SetPlane(plane);
             sketch.Create();
 
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
-            document2D.ksCircle(width/2, 0, diametr, 1);
+            document2D.ksCircle(width / 2, 0, diametr, 1);
 
             sketchDefinition.EndEdit();
 
             ///Выдавливание
-            ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_bossExtrusion);
+            ksEntity extrude = part.NewEntity((short) Obj3dType.o3d_bossExtrusion);
             ksBossExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtReverse;
+            extrudeDefinition.directionType = (short) Direction_Type.dtReverse;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
             extrudeParam.depthReverse = height;
@@ -229,29 +263,38 @@ namespace BeltBuilder
         /// <param name="length"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        public void BuildTriangularBuckle(ksPart part, ksEntity plane, int length, int height, int widthTape)
+        public void BuildTriangularBuckle(ksPart part, ksEntity plane, int length,
+            int height, int widthTape)
         {
-            ksEntity sketch = part.NewEntity((short)Obj3dType.o3d_sketch);
+            ksEntity sketch = part.NewEntity((short) Obj3dType.o3d_sketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
             sketchDefinition.SetPlane(plane);
             sketch.Create();
 
             // Входим в режим редактирования эскиза
             ksDocument2D document2D = sketchDefinition.BeginEdit();
-            document2D.ksLineSeg(-(widthTape / 10), -2, widthTape + (widthTape / 10), -2, 1);
-            document2D.ksLineSeg(widthTape + (widthTape / 10), -2, widthTape / 2, -length, 1);
+            document2D.ksLineSeg(-(widthTape / 10), -2, widthTape + widthTape / 10, -2,
+                1);
+
+            document2D.ksLineSeg(widthTape + widthTape / 10, -2, widthTape / 2, -length,
+                1);
+
             document2D.ksLineSeg(widthTape / 2, -length, -(widthTape / 10), -2, 1);
 
-            document2D.ksLineSeg(-(widthTape / 10) - 3, 0, widthTape + (widthTape / 10) + 3, 0, 1);
-            document2D.ksLineSeg(widthTape + (widthTape / 10) + 3, 0, widthTape / 2, -length - 2, 1);
+            document2D.ksLineSeg(-(widthTape / 10) - 3, 0, widthTape + widthTape / 10 + 3,
+                0, 1);
+
+            document2D.ksLineSeg(widthTape + widthTape / 10 + 3, 0, widthTape / 2,
+                -length - 2, 1);
+
             document2D.ksLineSeg(widthTape / 2, -length - 2, -(widthTape / 10) - 3, 0, 1);
 
             sketchDefinition.EndEdit();
 
             ///Выдавливание
-            ksEntity extrude = part.NewEntity((short)Obj3dType.o3d_bossExtrusion);
+            ksEntity extrude = part.NewEntity((short) Obj3dType.o3d_bossExtrusion);
             ksBossExtrusionDefinition extrudeDefinition = extrude.GetDefinition();
-            extrudeDefinition.directionType = (short)Direction_Type.dtNormal;
+            extrudeDefinition.directionType = (short) Direction_Type.dtNormal;
             extrudeDefinition.SetSketch(sketch);
             ksExtrusionParam extrudeParam = extrudeDefinition.ExtrusionParam();
             extrudeParam.depthNormal = height;

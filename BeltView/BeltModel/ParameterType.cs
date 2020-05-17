@@ -1,5 +1,8 @@
 ﻿namespace BeltModel
 {
+    /// <summary>
+    ///     Перечисление типов параметров для объекта BeltParam
+    /// </summary>
     public enum ParameterType
     {
         LengthTape,
